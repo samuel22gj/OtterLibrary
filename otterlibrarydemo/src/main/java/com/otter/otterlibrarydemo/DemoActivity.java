@@ -7,7 +7,11 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * A template for demo activity which include a billboard and an operation list.
@@ -21,6 +25,9 @@ public abstract class DemoActivity extends AppCompatActivity
     /** Return a string array which include every operation name. */
     public abstract String[] setOperationItem();
 
+    private ScrollView log_scrollview;
+    private TextView log;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +35,8 @@ public abstract class DemoActivity extends AppCompatActivity
         setContentView(R.layout.activity_demo);
         TextView billboard = (TextView) findViewById(R.id.billboard);
         ListView operation_list = (ListView) findViewById(R.id.operation_list);
+        log_scrollview = (ScrollView) findViewById(R.id.log_scrollview);
+        log = (TextView) findViewById(R.id.log);
 
         billboard.setText(setBillboard());
 
@@ -37,6 +46,34 @@ public abstract class DemoActivity extends AppCompatActivity
                 setOperationItem());
         operation_list.setAdapter(adapter);
         operation_list.setOnItemClickListener(this);
+    }
+
+    /** Set the message to the log view. */
+    public void setLog(String message) {
+        message = enrichMessage(message);
+        log.setText(message + "\n");
+    }
+
+    /** Append the message to the log view. */
+    public void appendLog(String message) {
+        message = enrichMessage(message);
+        log.append(message + "\n");
+        log_scrollview.post(new Runnable() {
+            public void run() {
+                log_scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        });
+    }
+
+    private String enrichMessage(String message) {
+        // Get current time.
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss.SSS");
+        String time = format.format(new Date());
+
+        // Make multi line message align timestamp.
+        message = message.replace("\n", "\n\t\t\t\t\t\t");
+
+        return time + "\t" + message;
     }
 
     @Override
