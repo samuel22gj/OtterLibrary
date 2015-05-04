@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.otter.otterlibrarydemo" >
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +23,15 @@
         <activity
             android:name=".olog.OLogDemo"
             android:label="@string/title_activity_olog_demo" >
+            <intent-filter>
+                <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".oconnectivity.OConnectivityDemo"
+            android:label="@string/title_activity_oconnectivity_demo" >
             <intent-filter>
                 <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
             </intent-filter>
