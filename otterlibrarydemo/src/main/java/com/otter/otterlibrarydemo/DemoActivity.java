@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * A template for demo activity which include a billboard and an operation list.
@@ -84,7 +85,7 @@ public abstract class DemoActivity extends AppCompatActivity
 
     private String enrichMessage(String message) {
         // Get current time.
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss.SSS");
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss.SSS", Locale.US);
         String time = format.format(new Date());
 
         // Make multi line message align timestamp.
