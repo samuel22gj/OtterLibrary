@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -92,6 +93,60 @@ public abstract class DemoActivity extends AppCompatActivity
         message = message.replace("\n", "\n\t\t\t\t\t\t");
 
         return time + "\t" + message;
+    }
+
+    /** Print the directory structure on log view. */
+    public void printDirOnLog(File dir) {
+        if (dir != null && dir.exists()) {
+            log.append("--- " + dir.getAbsolutePath() + " ---\n");
+            printDirOnLog(dir, 0);
+            log.append("\n");
+
+            log_scrollview.post(new Runnable() {
+                public void run() {
+                    log_scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+                }
+            });
+        }
+    }
+
+    private void printDirOnLog(File dir, int level) {
+        File[] children = dir.listFiles();
+        for (File child : children) {
+            for (int i = 0; i < level; i++) {
+                log.append("\t");
+            }
+
+            if (child.isDirectory()) {
+                log.append(child.getName() + "\n");
+                printDirOnLog(child, level + 1);
+            } else {
+                log.append(child.getName() + " (" + getFileSizeString(child) + ")\n");
+            }
+        }
+    }
+
+    private String getFileSizeString(File file) {
+        if (file == null || !file.exists()) {
+            return "";
+        }
+
+        double size = file.length();
+        if (size < 1024) {
+            return size + "Byte";
+        } else if (size < 1024 * 1024){
+            size /= 1024;
+            return size + "K";
+        } else if (size < 1024 * 1024 * 1024){
+            size /= 1024 * 1024;
+            return size + "M";
+        } else if (size < (double) 1024 * 1024 * 1024 * 1024){
+            size /= 1024 * 1024 * 1024;
+            return size + "G";
+        } else {
+            size /= (double) 1024 * 1024 * 1024 * 1024;
+            return size + "T";
+        }
     }
 
     @Override
