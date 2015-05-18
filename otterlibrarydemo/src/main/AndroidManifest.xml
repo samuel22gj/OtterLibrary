@@ -37,6 +37,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ofile.OFileDemo"
+            android:label="@string/title_activity_ofile_demo" >
+            <intent-filter>
+                <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
