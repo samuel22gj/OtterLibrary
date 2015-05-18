@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -25,6 +26,8 @@ public abstract class DemoActivity extends AppCompatActivity
     /** Return a string array which include every operation name. */
     public abstract String[] setOperationItem();
 
+    private TextView billboard;
+    ListView operation_list;
     private ScrollView log_scrollview;
     private TextView log;
 
@@ -33,8 +36,8 @@ public abstract class DemoActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_demo);
-        TextView billboard = (TextView) findViewById(R.id.billboard);
-        ListView operation_list = (ListView) findViewById(R.id.operation_list);
+        billboard = (TextView) findViewById(R.id.billboard);
+        operation_list = (ListView) findViewById(R.id.operation_list);
         log_scrollview = (ScrollView) findViewById(R.id.log_scrollview);
         log = (TextView) findViewById(R.id.log);
 
@@ -46,6 +49,20 @@ public abstract class DemoActivity extends AppCompatActivity
                 setOperationItem());
         operation_list.setAdapter(adapter);
         operation_list.setOnItemClickListener(this);
+    }
+
+    /** Set the weight of child views. The parameter must greater than zero. */
+    public void setLayoutWeight(int billboard, int operation, int log) {
+        if (billboard < 0 || operation < 0 || log < 0) {
+            return;
+        }
+        LinearLayout.LayoutParams lp;
+        lp = (LinearLayout.LayoutParams) this.billboard.getLayoutParams();
+        lp.weight = billboard;
+        lp = (LinearLayout.LayoutParams) this.operation_list.getLayoutParams();
+        lp.weight = operation;
+        lp = (LinearLayout.LayoutParams) this.log_scrollview.getLayoutParams();
+        lp.weight = log;
     }
 
     /** Set the message to the log view. */
