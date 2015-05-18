@@ -3,6 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="action_clear_log">Clear Log</string>
 
     <string name="title_activity_olog_demo">OLogDemo</string>
     <string name="title_activity_oconnectivity_demo">OConnectivityDemo</string>
