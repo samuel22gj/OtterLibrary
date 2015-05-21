@@ -19,8 +19,6 @@ build:
         name: run gradle
         code: |
           gradle --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
-
-  # A step that will be executed after building
   after-steps:
       # Use the build results
       - script:
