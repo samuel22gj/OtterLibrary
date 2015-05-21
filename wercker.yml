@@ -12,8 +12,19 @@ build:
           echo $ANDROID_BUILD_TOOLS
           echo $ANDROID_UPDATE_FILTER
           echo $ANDROID_NDK_HOME
+    - android-sdk-update:
+        filter: tools,platform-tools,android-21,android-22,build-tools-22.0.1,extra-android-support,extra-android-m2repository
     # A step that executes `gradle build` command
     - script:
         name: run gradle
         code: |
           gradle --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
+
+  # A step that will be executed after building
+  after-steps:
+      # Use the build results
+      - script:
+          name: inspect build result
+          code: |
+            ls -la otterlibrarydemo/build/outputs/apk
+            cp otterlibrarydemo/build/outputs/apk/*.apk $WERCKER_REPORT_ARTIFACTS_DIR
