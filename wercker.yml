@@ -20,9 +20,9 @@ build:
         code: |
           gradle --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
   after-steps:
-      # Use the build results
-      - script:
-          name: inspect build result
-          code: |
-            ls -la otterlibrarydemo/build/outputs/apk
-            cp otterlibrarydemo/build/outputs/apk/*.apk $WERCKER_REPORT_ARTIFACTS_DIR
+    # Use the build results
+    - script:
+        name: inspect build result
+        code: |
+          ls -la otterlibrarydemo/build/outputs/apk
+          cp otterlibrarydemo/build/outputs/apk/*.apk $WERCKER_REPORT_ARTIFACTS_DIR
