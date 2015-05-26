@@ -29,7 +29,7 @@ public abstract class DemoActivity extends AppCompatActivity
     public abstract String[] setOperationItem();
 
     private TextView billboard;
-    ListView operation_list;
+    private ListView operation_list;
     private ScrollView log_scrollview;
     private TextView log;
 
@@ -54,13 +54,11 @@ public abstract class DemoActivity extends AppCompatActivity
     }
 
     /** Set the weight of child views. The parameter must greater than zero. */
-    public void setLayoutWeight(int billboard, int operation, int log) {
-        if (billboard < 0 || operation < 0 || log < 0) {
+    public void setLayoutWeight(int operation, int log) {
+        if (operation < 0 || log < 0) {
             return;
         }
         LinearLayout.LayoutParams lp;
-        lp = (LinearLayout.LayoutParams) this.billboard.getLayoutParams();
-        lp.weight = billboard;
         lp = (LinearLayout.LayoutParams) this.operation_list.getLayoutParams();
         lp.weight = operation;
         lp = (LinearLayout.LayoutParams) this.log_scrollview.getLayoutParams();

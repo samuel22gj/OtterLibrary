@@ -20,7 +20,7 @@ public class OLogDemo extends DemoActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setLayoutWeight(2, 5, 1);
+        setLayoutWeight(5, 1);
     }
 
     @Override

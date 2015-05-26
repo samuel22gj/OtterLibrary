@@ -32,9 +32,9 @@ public class OFileDemo extends DemoActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setLayoutWeight(1, 2, 4);
+        setLayoutWeight(2, 3);
 
-        mParentDir =  getFilesDir();
+        mParentDir = getFilesDir();
 
         // Prepare sample file has 1 KB.
         mSampleFile = new File(mParentDir, "sample-file");
