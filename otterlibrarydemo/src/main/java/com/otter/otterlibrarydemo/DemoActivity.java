@@ -96,30 +96,26 @@ public abstract class DemoActivity extends AppCompatActivity
     /** Print the directory structure on log view. */
     public void printDirOnLog(File dir) {
         if (dir != null && dir.exists()) {
-            log.append("--- " + dir.getAbsolutePath() + " ---\n");
-            printDirOnLog(dir, 0);
-            log.append("\n");
+            StringBuilder tree = new StringBuilder();
+            tree.append("Print " + dir.getAbsolutePath() + "\n");
+            getDirStructure(tree, dir, 0);
 
-            log_scrollview.post(new Runnable() {
-                public void run() {
-                    log_scrollview.fullScroll(ScrollView.FOCUS_DOWN);
-                }
-            });
+            appendLog(tree.toString());
         }
     }
 
-    private void printDirOnLog(File dir, int level) {
+    private void getDirStructure(StringBuilder tree, File dir, int level) {
         File[] children = dir.listFiles();
         for (File child : children) {
             for (int i = 0; i < level; i++) {
-                log.append("\t");
+                tree.append("    ");
             }
 
             if (child.isDirectory()) {
-                log.append(child.getName() + "\n");
-                printDirOnLog(child, level + 1);
+                tree.append(child.getName() + " (Dir)\n");
+                getDirStructure(tree, child, level + 1);
             } else {
-                log.append(child.getName() + " (" + getFileSizeString(child) + ")\n");
+                tree.append(child.getName() + " (" + getFileSizeString(child) + ")\n");
             }
         }
     }
