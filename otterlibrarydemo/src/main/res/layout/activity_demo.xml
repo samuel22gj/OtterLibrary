@@ -31,7 +31,8 @@
             android:id="@+id/log"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:typeface="monospace"
+            android:textSize="18sp"/>
 
     </ScrollView>
 

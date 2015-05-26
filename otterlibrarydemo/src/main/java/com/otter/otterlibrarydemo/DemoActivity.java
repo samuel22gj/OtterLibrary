@@ -84,13 +84,13 @@ public abstract class DemoActivity extends AppCompatActivity
 
     private String enrichMessage(String message) {
         // Get current time.
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss.SSS", Locale.US);
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss", Locale.US);
         String time = format.format(new Date());
 
         // Make multi line message align timestamp.
-        message = message.replace("\n", "\n\t\t\t\t\t\t");
+        if (message != null) message = message.replace("\n", "\n         ");
 
-        return time + "\t" + message;
+        return time + " " + message;
     }
 
     /** Print the directory structure on log view. */
