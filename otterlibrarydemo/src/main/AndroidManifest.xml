@@ -3,6 +3,7 @@
     package="com.otter.otterlibrarydemo" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/> <!-- for Superuser -->
 
     <application
         android:allowBackup="true"
@@ -40,6 +41,14 @@
         <activity
             android:name=".ofile.OFileDemo"
             android:label="@string/title_activity_ofile_demo" >
+            <intent-filter>
+                <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".oshellcommand.OShellCommandDemo"
+            android:label="@string/title_activity_oshellcommand_demo" >
             <intent-filter>
                 <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
             </intent-filter>

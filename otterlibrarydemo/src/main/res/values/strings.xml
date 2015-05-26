@@ -8,4 +8,5 @@
     <string name="title_activity_olog_demo">OLogDemo</string>
     <string name="title_activity_oconnectivity_demo">OConnectivityDemo</string>
     <string name="title_activity_ofile_demo">OFileDemo</string>
+    <string name="title_activity_oshellcommand_demo">OShellCommandDemo</string>
 </resources>
