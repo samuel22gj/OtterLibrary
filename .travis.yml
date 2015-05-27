@@ -19,6 +19,7 @@ android:
     - build-tools-22.0.1
     - extra-android-support
     - extra-android-m2repository
+    - sys-img-armeabi-v7a-android-22
 
 before_script:
   # Make gradlew have permission to execute
