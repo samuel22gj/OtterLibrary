@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/> <!-- for Superuser -->
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
     <application
         android:allowBackup="true"
@@ -62,6 +63,14 @@
             </intent-filter>
         </activity>
         <service android:name=".oservice.DummyService" />
+
+        <activity
+            android:name=".ostatusbar.OStatusBarDemo"
+            android:label="@string/title_activity_statusbar_demo" >
+            <intent-filter>
+                <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
+            </intent-filter>
+        </activity>
 
     </application>
 
