@@ -54,6 +54,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".oservice.OServiceDemo"
+            android:label="@string/title_activity_oservice_demo" >
+            <intent-filter>
+                <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
+            </intent-filter>
+        </activity>
+        <service android:name=".oservice.DummyService" />
+
     </application>
 
 </manifest>
