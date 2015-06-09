@@ -10,5 +10,5 @@
     <string name="title_activity_ofile_demo">OFileDemo</string>
     <string name="title_activity_oshellcommand_demo">OShellCommandDemo</string>
     <string name="title_activity_oservice_demo">OServiceDemo</string>
-    <string name="title_activity_statusbar_demo">OStatusBarDemo</string>
+    <string name="title_activity_ostatusbar_demo">OStatusBarDemo</string>
 </resources>
