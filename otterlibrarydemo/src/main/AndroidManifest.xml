@@ -72,6 +72,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".oscreen.OScreenDemo"
+            android:label="@string/title_activity_oscreen_demo" >
+            <intent-filter>
+                <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
