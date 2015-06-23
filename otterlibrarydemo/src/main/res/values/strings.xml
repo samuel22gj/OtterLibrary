@@ -12,4 +12,5 @@
     <string name="title_activity_oservice_demo">OServiceDemo</string>
     <string name="title_activity_ostatusbar_demo">OStatusBarDemo</string>
     <string name="title_activity_oscreen_demo">OScreenDemo</string>
+    <string name="title_activity_opackage_demo">OPackageDemo</string>
 </resources>
