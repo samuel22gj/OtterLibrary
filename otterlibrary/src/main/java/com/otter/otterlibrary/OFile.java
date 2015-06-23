@@ -1,38 +1,28 @@
 package com.otter.otterlibrary;
 
+import android.content.Context;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * OFile is a toolkit of file operation.
  */
 public class OFile {
 
-    /** Copy the file. It will override current file. */
-    public static boolean copyFile(File from, File to) {
-        if (from == null || to == null) {
-            return false;
-        }
-        if (!from.exists() || !from.isFile() || !from.canRead()) {
-            return false;
-        }
-
-        FileInputStream in = null;
-        FileOutputStream out = null;
+    private static void copy(InputStream in, OutputStream out) {
         try {
-            in = new FileInputStream(from);
-            out = new FileOutputStream(to);
             byte[] buffer = new byte[1024];
             int byteCount;
 
             while ((byteCount = in.read(buffer)) != -1) {
                 out.write(buffer, 0, byteCount);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -50,6 +40,24 @@ public class OFile {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    /** Copy the file. It will override current file. */
+    public static boolean copyFile(File from, File to) {
+        if (from == null || to == null) {
+            return false;
+        }
+        if (!from.exists() || !from.isFile() || !from.canRead()) {
+            return false;
+        }
+
+        try {
+            FileInputStream in = new FileInputStream(from);
+            FileOutputStream out = new FileOutputStream(to);
+            copy(in, out);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
 
         long fromLength = from.length();
@@ -111,5 +119,23 @@ public class OFile {
 
         // The directory is now empty so delete it
         return dir.delete();
+    }
+
+    /** Copy the file from assets. It will override current file. */
+    public static boolean copyFileFromAssets(Context ctx, String fileName, File to) {
+        if (fileName == null || to == null) {
+            return false;
+        }
+        try {
+            InputStream in = ctx.getAssets().open(fileName);
+            FileOutputStream out = new FileOutputStream(to);
+            copy(in, out);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return to.exists();
     }
 }

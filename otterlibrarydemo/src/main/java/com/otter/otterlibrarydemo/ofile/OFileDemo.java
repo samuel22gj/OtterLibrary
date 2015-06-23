@@ -21,12 +21,15 @@ public class OFileDemo extends DemoActivity {
             "Those files will be deleted when application destroy.";
     private static final String[] OPERATION_ITEM = {
             "Print directory structure", "Create sample directory",
-            "copyFile", "copyDir", "deleteDir"
+            "copyFile", "copyDir", "deleteDir",
+            "copyFileFromAssets"
     };
 
     private File mParentDir;
     private File mSampleFile;
     private File mSampleDir;
+
+    private String mAssetsFileName = "TPLocation.apk";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,11 @@ public class OFileDemo extends DemoActivity {
                 break;
             case 4: // deleteDir
                 appendLog("deleteDir: " + OFile.deleteDir(new File(mParentDir, "copyDir")));
+                break;
+            case 5: // copyFileFromAssets
+                appendLog("copyFileFromAssets: " + OFile.copyFileFromAssets(
+                        getApplicationContext(),
+                        mAssetsFileName, new File(mParentDir, mAssetsFileName)));
                 break;
             default:
                 break;
