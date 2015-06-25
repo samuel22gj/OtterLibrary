@@ -5,9 +5,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * OConnectivity is a wrapper of {@link android.net.ConnectivityManager}.
+ * ONetwork is a wrapper of {@link android.net.ConnectivityManager}.
  */
-public class OConnectivity {
+public class ONetwork {
 
     private static NetworkInfo getNetworkInfo(Context context){
         ConnectivityManager cm = (ConnectivityManager)

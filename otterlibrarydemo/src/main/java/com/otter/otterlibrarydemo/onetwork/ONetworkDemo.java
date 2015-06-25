@@ -1,4 +1,4 @@
-package com.otter.otterlibrarydemo.oconnectivity;
+package com.otter.otterlibrarydemo.onetwork;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,12 +6,12 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.otter.otterlibrary.OConnectivity;
+import com.otter.otterlibrary.ONetwork;
 import com.otter.otterlibrarydemo.DemoActivity;
 
-public class OConnectivityDemo extends DemoActivity {
+public class ONetworkDemo extends DemoActivity {
     private static final String BILLBOARD =
-            "Detect connectivity status.";
+            "Get network status.";
     private static final String[] OPERATION_ITEM = {
             "Open Settings", "isConnected", "isConnectedWifi", "isConnectedMobile"
     };
@@ -40,13 +40,13 @@ public class OConnectivityDemo extends DemoActivity {
                 startActivity(intent);
                 break;
             case 1: // isConnected
-                setLog("isConnected: " + OConnectivity.isConnected(getApplicationContext()));
+                setLog("isConnected: " + ONetwork.isConnected(getApplicationContext()));
                 break;
             case 2: // isConnectedWifi
-                setLog("isConnectedWifi: " + OConnectivity.isConnectedWifi(getApplicationContext()));
+                setLog("isConnectedWifi: " + ONetwork.isConnectedWifi(getApplicationContext()));
                 break;
             case 3: // isConnectedMobile
-                setLog("isConnectedMobile: " + OConnectivity.isConnectedMobile(getApplicationContext()));
+                setLog("isConnectedMobile: " + ONetwork.isConnectedMobile(getApplicationContext()));
                 break;
             default:
                 break;

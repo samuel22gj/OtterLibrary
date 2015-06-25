@@ -34,8 +34,8 @@
 
 
         <activity
-            android:name=".oconnectivity.OConnectivityDemo"
-            android:label="@string/title_activity_oconnectivity_demo" >
+            android:name=".onetwork.ONetworkDemo"
+            android:label="@string/title_activity_onetwork_demo" >
             <intent-filter>
                 <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
             </intent-filter>
