@@ -13,12 +13,15 @@ public class ONetworkDemo extends DemoActivity {
     private static final String BILLBOARD =
             "Get network status.";
     private static final String[] OPERATION_ITEM = {
-            "Open Settings", "isConnected", "isConnectedWifi", "isConnectedMobile"
+            "Open Settings", "isConnected", "isConnectedWifi", "isConnectedMobile",
+            "getIpAddress", "getMacAddress"
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setLayoutWeight(4, 6);
     }
 
     @Override
@@ -40,13 +43,33 @@ public class ONetworkDemo extends DemoActivity {
                 startActivity(intent);
                 break;
             case 1: // isConnected
-                setLog("isConnected: " + ONetwork.isConnected(getApplicationContext()));
+                appendLog("isConnected: " + ONetwork.isConnected(getApplicationContext()));
                 break;
             case 2: // isConnectedWifi
-                setLog("isConnectedWifi: " + ONetwork.isConnectedWifi(getApplicationContext()));
+                appendLog("isConnectedWifi: " + ONetwork.isConnectedWifi(getApplicationContext()));
                 break;
             case 3: // isConnectedMobile
-                setLog("isConnectedMobile: " + ONetwork.isConnectedMobile(getApplicationContext()));
+                appendLog("isConnectedMobile: " + ONetwork.isConnectedMobile(getApplicationContext()));
+                break;
+            case 4: // getIpAddress
+                appendLog("getIpAddress(eth0, true): " + ONetwork.getIpAddress("eth0", true));
+                appendLog("getIpAddress(eth0, false): " + ONetwork.getIpAddress("eth0", false));
+                appendLog("getIpAddress(eth1, true): " + ONetwork.getIpAddress("eth1", true));
+                appendLog("getIpAddress(eth1, false): " + ONetwork.getIpAddress("eth1", false));
+                appendLog("getIpAddress(wlan0, true): " + ONetwork.getIpAddress("wlan0", true));
+                appendLog("getIpAddress(wlan0, false): " + ONetwork.getIpAddress("wlan0", false));
+                appendLog("getIpAddress(null, true): " + ONetwork.getIpAddress(null, true));
+                appendLog("getIpAddress(null, false): " + ONetwork.getIpAddress(null, false));
+                appendLog("getIpAddress(123, true): " + ONetwork.getIpAddress("123", true));
+                appendLog("getIpAddress(123, false): " + ONetwork.getIpAddress("123", false));
+
+                break;
+            case 5: // getMacAddress
+                appendLog("getMacAddress(eth0): " + ONetwork.getMacAddress("eth0"));
+                appendLog("getMacAddress(eth1): " + ONetwork.getMacAddress("eth1"));
+                appendLog("getMacAddress(wlan0): " + ONetwork.getMacAddress("wlan0"));
+                appendLog("getMacAddress(null): " + ONetwork.getMacAddress(null));
+                appendLog("getMacAddress(123): " + ONetwork.getMacAddress("123"));
                 break;
             default:
                 break;
