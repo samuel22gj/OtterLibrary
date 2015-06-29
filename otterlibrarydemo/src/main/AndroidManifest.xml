@@ -90,6 +90,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".omessagedigest.OMessageDigestDemo"
+            android:label="@string/title_activity_omessagedigest_demo" >
+            <intent-filter>
+                <action android:name="com.otter.otterlibrarydemo.DEMO_CODE" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
