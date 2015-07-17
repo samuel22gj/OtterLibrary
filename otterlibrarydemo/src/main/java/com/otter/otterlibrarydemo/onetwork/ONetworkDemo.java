@@ -51,7 +51,7 @@ public class ONetworkDemo extends DemoActivity {
                 appendLog("isConnectedMobile: " + ONetwork.isConnectedMobile(getApplicationContext()));
                 break;
             case 4: // getIpAddress
-                appendLog("getIpAddress(eth0, true): " + ONetwork.getIpAddress("eth0", true));
+                setLog("getIpAddress(eth0, true): " + ONetwork.getIpAddress("eth0", true));
                 appendLog("getIpAddress(eth0, false): " + ONetwork.getIpAddress("eth0", false));
                 appendLog("getIpAddress(eth1, true): " + ONetwork.getIpAddress("eth1", true));
                 appendLog("getIpAddress(eth1, false): " + ONetwork.getIpAddress("eth1", false));
@@ -61,10 +61,9 @@ public class ONetworkDemo extends DemoActivity {
                 appendLog("getIpAddress(null, false): " + ONetwork.getIpAddress(null, false));
                 appendLog("getIpAddress(123, true): " + ONetwork.getIpAddress("123", true));
                 appendLog("getIpAddress(123, false): " + ONetwork.getIpAddress("123", false));
-
                 break;
             case 5: // getMacAddress
-                appendLog("getMacAddress(eth0): " + ONetwork.getMacAddress("eth0"));
+                setLog("getMacAddress(eth0): " + ONetwork.getMacAddress("eth0"));
                 appendLog("getMacAddress(eth1): " + ONetwork.getMacAddress("eth1"));
                 appendLog("getMacAddress(wlan0): " + ONetwork.getMacAddress("wlan0"));
                 appendLog("getMacAddress(null): " + ONetwork.getMacAddress(null));
