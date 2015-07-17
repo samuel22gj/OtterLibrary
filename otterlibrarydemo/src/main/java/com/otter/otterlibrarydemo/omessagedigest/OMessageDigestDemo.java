@@ -32,6 +32,7 @@ public class OMessageDigestDemo extends DemoActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setLayoutWeight(0, 1);
 
         mParentDir = getFilesDir();
 

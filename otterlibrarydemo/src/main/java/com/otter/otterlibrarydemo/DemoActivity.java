@@ -33,6 +33,8 @@ public abstract class DemoActivity extends AppCompatActivity
     private ScrollView log_scrollview;
     private TextView log;
 
+    private boolean mTimestampPrefix = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,27 +55,49 @@ public abstract class DemoActivity extends AppCompatActivity
         operation_list.setOnItemClickListener(this);
     }
 
-    /** Set the weight of child views. The parameter must greater than zero. */
+    /**
+     * Change the display ratio of child views.
+     *
+     * @param operation The weight of Operation ListView. Set 0 to be {@code WRAP_CONTENT}
+     * @param log The weight of Log ScrollView. Set 0 to be {@code WRAP_CONTENT}
+     */
     public void setLayoutWeight(int operation, int log) {
-        if (operation < 0 || log < 0) {
-            return;
-        }
         LinearLayout.LayoutParams lp;
+
+        // Operation ListView
         lp = (LinearLayout.LayoutParams) this.operation_list.getLayoutParams();
-        lp.weight = operation;
+        if (operation > 0) {
+            lp.weight = operation;
+        } else {
+            lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            lp.weight = 0;
+        }
+
+        // Log ScrollView
         lp = (LinearLayout.LayoutParams) this.log_scrollview.getLayoutParams();
-        lp.weight = log;
+        if (log > 0) {
+            lp.weight = log;
+        } else {
+            lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            lp.weight = 0;
+        }
     }
 
     /** Set the message to the log view. */
     public void setLog(String message) {
-        message = enrichMessage(message);
+        if (mTimestampPrefix) {
+            message = addTimestampPrefix(message);
+        }
+
         log.setText(message + "\n");
     }
 
     /** Append the message to the log view. */
     public void appendLog(String message) {
-        message = enrichMessage(message);
+        if (mTimestampPrefix) {
+            message = addTimestampPrefix(message);
+        }
+
         log.append(message + "\n");
         log_scrollview.post(new Runnable() {
             public void run() {
@@ -82,7 +106,7 @@ public abstract class DemoActivity extends AppCompatActivity
         });
     }
 
-    private String enrichMessage(String message) {
+    private String addTimestampPrefix(String message) {
         // Get current time.
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss", Locale.US);
         String time = format.format(new Date());
@@ -91,6 +115,15 @@ public abstract class DemoActivity extends AppCompatActivity
         if (message != null) message = message.replace("\n", "\n         ");
 
         return time + " " + message;
+    }
+
+    /**
+     * Determine whether to add timestamp prefix in log or not. The default was disable.
+     *
+     * @param enabled {@code true} to enable, {@code false} to disable.
+     */
+    public void setTimestampPrefix(boolean enabled) {
+        mTimestampPrefix = enabled;
     }
 
     /** Print the directory structure on log view. */

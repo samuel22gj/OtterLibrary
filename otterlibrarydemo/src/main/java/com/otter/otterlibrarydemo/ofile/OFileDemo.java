@@ -34,7 +34,6 @@ public class OFileDemo extends DemoActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setLayoutWeight(2, 3);
 
         mParentDir = getFilesDir();

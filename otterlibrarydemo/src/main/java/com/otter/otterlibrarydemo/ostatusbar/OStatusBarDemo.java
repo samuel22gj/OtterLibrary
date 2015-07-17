@@ -1,5 +1,6 @@
 package com.otter.otterlibrarydemo.ostatusbar;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,13 @@ public class OStatusBarDemo extends DemoActivity {
             "expandNotificationsPanel() && collapsePanels()",
             "expandSettingsPanel() && collapsePanels()"
     };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setLayoutWeight(0, 1);
+        setTimestampPrefix(true);
+    }
 
     @Override
     public String setBillboard() {

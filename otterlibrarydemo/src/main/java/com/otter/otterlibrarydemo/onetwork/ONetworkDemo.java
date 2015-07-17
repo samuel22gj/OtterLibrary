@@ -20,8 +20,7 @@ public class ONetworkDemo extends DemoActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setLayoutWeight(4, 6);
+        setLayoutWeight(2, 3);
     }
 
     @Override
