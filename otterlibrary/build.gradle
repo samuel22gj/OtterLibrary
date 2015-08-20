@@ -29,8 +29,9 @@ dependencies {
 }
 
 // Distribute to maven repository server.
-if (project.rootProject.file('local.properties') != null) {
-    println("local.properties != null")
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+if (properties.getProperty("bintray.user") != null) {
     ext {
         bintrayRepo = 'maven'
         bintrayName = 'otterlibrary'
@@ -57,6 +58,4 @@ if (project.rootProject.file('local.properties') != null) {
 
     apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
     apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
-} else {
-    println("local.properties == null")
 }
