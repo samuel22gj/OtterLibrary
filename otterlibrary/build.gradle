@@ -29,7 +29,7 @@ dependencies {
 }
 
 // Distribute to maven repository server.
-if (project.rootProject.file('local.properties') != null) {
+if (project.rootProject.file('local.properties').exists()) {
     println("local.properties != null")
 
     Properties properties = new Properties()
