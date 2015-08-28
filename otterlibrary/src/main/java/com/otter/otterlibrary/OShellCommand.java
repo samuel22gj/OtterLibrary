@@ -10,13 +10,25 @@ import java.io.InputStreamReader;
  */
 public class OShellCommand {
 
-    // TODO: Support multiple commands.
     /** Run command with application PID & UID and return output string. */
-    public static String exec(String command) {
+    public static String exec(String... commands) {
+        if (commands == null) return null;
+
         String output = null;
 
+        // Use normal command delimeter ";" to combine commands.
+        StringBuilder mixedCommand = new StringBuilder();
+        for (String command : commands) {
+            mixedCommand.append(command);
+            // Must add space around semicolon! Due to it will be broke down
+            // into array by StringTokenizer in java.lang.Runtime(Line:238).
+            mixedCommand.append(" ; ");
+        }
+        // Remove last semicolon.
+        mixedCommand.delete(mixedCommand.length() - 3, mixedCommand.length());
+
         try {
-            Process app = Runtime.getRuntime().exec(command);
+            Process app = Runtime.getRuntime().exec(mixedCommand.toString());
             output = getOutput(app);
         } catch (IOException e) {
             e.printStackTrace();
@@ -27,6 +39,8 @@ public class OShellCommand {
 
     /** Run command with root permission and return output string. */
     public static String su(String... commands) {
+        if (commands == null) return null;
+
         String output = null;
 
         try {
@@ -58,9 +72,9 @@ public class OShellCommand {
         try {
             BufferedReader reader = new BufferedReader(
                 new InputStreamReader(process.getInputStream()));
-            String line = "";
+            String line;
             while ((line = reader.readLine()) != null) {
-                output.append(line + "\n");
+                output.append(line).append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();

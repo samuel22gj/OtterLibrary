@@ -11,14 +11,15 @@ public class OShellCommandDemo extends DemoActivity {private static final String
         "Select below command and the stdout will print.\n" +
         "Need to root device and install superuser manager app for \"su\".";
     private static final String[] OPERATION_ITEM = {
-            "ls", "ps", "cat /proc/cmdline", "su && cat /proc/cmdline"
+            "ps", "ls .; ls /mnt", "cat /proc/cmdline",
+            "su; cat /proc/cmdline", "su; cd /system/app; ls"
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setLayoutWeight(1, 2);
+        setLayoutWeight(2, 3);
     }
 
     @Override
@@ -34,17 +35,20 @@ public class OShellCommandDemo extends DemoActivity {private static final String
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
-            case 0: // ls
-                setLog(OShellCommand.exec("ls"));
-                break;
-            case 1: // ps
+            case 0: // ps
                 setLog(OShellCommand.exec("ps"));
+                break;
+            case 1: // ls .; ls /mnt
+                setLog(OShellCommand.exec("ls .", "ls /mnt"));
                 break;
             case 2: // cat /proc/cmdline
                 setLog(OShellCommand.exec("cat /proc/cmdline"));
                 break;
-            case 3: // su && cat /proc/cmdline
+            case 3: // su; cat /proc/cmdline
                 setLog(OShellCommand.su("cat /proc/cmdline"));
+                break;
+            case 4: // su; cd /system/app; ls
+                setLog(OShellCommand.su("cd /system/app", "ls"));
                 break;
             default:
                 break;
