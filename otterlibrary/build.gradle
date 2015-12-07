@@ -8,7 +8,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
     }
     buildTypes {
         release {
@@ -43,7 +43,7 @@ if (project.rootProject.file('local.properties').exists()) {
         siteUrl = 'https://github.com/samuel22gj/OtterLibrary'
         gitUrl = 'https://github.com/samuel22gj/OtterLibrary.git'
 
-        libraryVersion = '1.0.0'
+        libraryVersion = '1.0.1'
 
         developerId = 'samuel22gj'
         developerName = 'Samuel Huang'
