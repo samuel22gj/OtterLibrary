@@ -8,28 +8,32 @@ jdk: oraclejdk8
 
 env:
   matrix:
-    - ANDROID_TARGET=android-23
-      ANDROID_ABI=armeabi-v7a
+    - ANDROID_API_LEVEL=23
+      ANDROID_BUILD_TOOLS_VERSION=23.0.2
+      ANDROID_TARGET_API_LEVEL=23
+      ANDROID_TARGET="android-"
+      ANDROID_ABI=default/armeabi-v7a
 
 android:
   components:
-    - platform-tools
     - tools
-    - android-23
-    - build-tools-23.0.0
+    - platform-tools
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
     - extra-android-support
     - extra-android-m2repository
-    #- sys-img-armeabi-v7a-android-23
+    #- android-$ANDROID_TARGET_API_LEVEL
+    #- sys-img-armeabi-v7a-android-$ANDROID_TARGET_API_LEVEL
 
 before_script:
   # Make gradlew have permission to execute
   - chmod +x gradlew
   # Create, start and wait device
-  #- echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  #- echo no | android create avd --force -n test -t "$ANDROID_TARGET$ANDROID_TARGET_API_LEVEL" --abi $ANDROID_ABI
   #- emulator -avd test -no-skin -no-audio -no-window &
   #- android-wait-for-emulator
   #- adb shell input keyevent 82 &
 
 script:
   # Default is "./gradlew build connectedCheck"
-  - ./gradlew --full-stacktrace build
+  - ./gradlew --full-stacktrace build -PdisablePreDex
