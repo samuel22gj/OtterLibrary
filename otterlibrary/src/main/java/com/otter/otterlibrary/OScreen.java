@@ -102,4 +102,16 @@ public class OScreen {
     public static float getDensityDpi(Context ctx) {
         return getRealDisplayMetrics(ctx).densityDpi;
     }
+
+    /**
+     * Returns the rotation of the screen from its "natural" orientation.
+     *
+     * @see android.view.Surface#ROTATION_0
+     * @see android.view.Surface#ROTATION_90
+     * @see android.view.Surface#ROTATION_180
+     * @see android.view.Surface#ROTATION_270
+     */
+    public static int getRotation (Context ctx) {
+        return getDisplay(ctx).getRotation();
+    }
 }

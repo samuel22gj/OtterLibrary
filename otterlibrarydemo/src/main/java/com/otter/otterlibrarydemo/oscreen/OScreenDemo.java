@@ -12,7 +12,8 @@ public class OScreenDemo extends DemoActivity {
     private static final String[] OPERATION_ITEM = {
             "getWidth", "getHeight",
             "getRealWidth", "getRealHeight",
-            "getDensity", "getDensityDpi"
+            "getDensity", "getDensityDpi",
+            "getRotation"
     };
 
     @Override
@@ -46,6 +47,8 @@ public class OScreenDemo extends DemoActivity {
             case 5: // getDensityDpi
                 appendLog("getDensityDpi: " + OScreen.getDensityDpi(getApplicationContext()));
                 break;
+            case 6: // getRotation
+                appendLog("getRotation: " + OScreen.getRotation(getApplicationContext()));
             default:
                 break;
         }
