@@ -23,6 +23,7 @@ A android library with a lot of useful method.
 ## Download
 
 [![Download](https://api.bintray.com/packages/samuel22gj/maven/otterlibrary/images/download.svg)](https://bintray.com/samuel22gj/maven/otterlibrary/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.samuel22gj/otterlibrary/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.github.samuel22gj/otterlibrary)
 
 Gradle:
 ```gradle
