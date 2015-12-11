@@ -104,7 +104,7 @@ public class OScreen {
     }
 
     /**
-     * Returns the rotation of the screen from its "natural" orientation.
+     * The rotation of the screen from its "natural" orientation.
      *
      * @see android.view.Surface#ROTATION_0
      * @see android.view.Surface#ROTATION_90
