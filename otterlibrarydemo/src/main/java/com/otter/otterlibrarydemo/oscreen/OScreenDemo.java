@@ -13,7 +13,7 @@ public class OScreenDemo extends DemoActivity {
             "getWidth", "getHeight",
             "getRealWidth", "getRealHeight",
             "getDensity", "getDensityDpi",
-            "getRotation"
+            "getRotation", "getOrientation"
     };
 
     @Override
@@ -49,6 +49,10 @@ public class OScreenDemo extends DemoActivity {
                 break;
             case 6: // getRotation
                 appendLog("getRotation: " + OScreen.getRotation(getApplicationContext()));
+                break;
+            case 7: // getOrientation
+                appendLog("getOrientation: " + OScreen.getOrientation(getApplicationContext()));
+                break;
             default:
                 break;
         }

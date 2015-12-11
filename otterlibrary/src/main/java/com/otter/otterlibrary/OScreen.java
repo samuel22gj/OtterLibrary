@@ -114,4 +114,16 @@ public class OScreen {
     public static int getRotation (Context ctx) {
         return getDisplay(ctx).getRotation();
     }
+
+    /**
+     * The overall orientation of the screen.
+     *
+     * @see android.content.res.Configuration#ORIENTATION_UNDEFINED
+     * @see android.content.res.Configuration#ORIENTATION_PORTRAIT
+     * @see android.content.res.Configuration#ORIENTATION_LANDSCAPE
+     * @see android.content.res.Configuration#ORIENTATION_SQUARE
+     */
+    public static int getOrientation (Context ctx) {
+        return ctx.getResources().getConfiguration().orientation;
+    }
 }
