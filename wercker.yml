@@ -1,5 +1,4 @@
-#box: wercker/android
-box: cattaka/android@1.5.0-r2
+box: wercker/android
 
 # Build definition
 build:
