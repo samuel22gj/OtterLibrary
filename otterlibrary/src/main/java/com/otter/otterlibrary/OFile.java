@@ -1,6 +1,7 @@
 package com.otter.otterlibrary;
 
 import android.content.Context;
+import android.webkit.MimeTypeMap;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -144,5 +145,15 @@ public class OFile {
         } else {
             return null;
         }
+    }
+
+    /** Get the MIME type of file, or {@code null} if it doesn't have. */
+    public static String getMimeType(File file) {
+        if (!isAvailableFile(file)) return null;
+
+        String extension = getExtension(file);
+        if (extension == null) return null;
+
+        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
     }
 }

@@ -23,7 +23,7 @@ public class OFileDemo extends DemoActivity {
             "Print directory structure", "Create sample directory",
             "copyFile", "copyDir", "deleteDir",
             "copyFileFromAssets",
-            "getExtension"
+            "getExtension", "getMimeType"
     };
 
     private File mParentDir;
@@ -110,6 +110,12 @@ public class OFileDemo extends DemoActivity {
                         + OFile.getExtension(mPngFile));
                 appendLog("getExtension(" + mSampleFile.getName() + "): "
                         + OFile.getExtension(mSampleFile));
+                break;
+            case 7: // getMimeType
+                appendLog("getMimeType(" + mPngFile.getName() + "): "
+                        + OFile.getMimeType(mPngFile));
+                appendLog("getMimeType(" + mSampleFile.getName() + "): "
+                        + OFile.getMimeType(mSampleFile));
                 break;
             default:
                 break;
