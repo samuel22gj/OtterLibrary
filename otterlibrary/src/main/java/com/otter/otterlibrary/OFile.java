@@ -15,6 +15,10 @@ import java.io.OutputStream;
  */
 public class OFile {
 
+    private static boolean isAvailableFile(File file) {
+        return file != null && file.exists() && file.canRead();
+    }
+
     private static void copy(InputStream in, OutputStream out) {
         try {
             byte[] buffer = new byte[1024];
@@ -45,10 +49,7 @@ public class OFile {
 
     /** Copy the file. It will override current file. */
     public static boolean copyFile(File from, File to) {
-        if (from == null || to == null) {
-            return false;
-        }
-        if (!from.exists() || !from.isFile() || !from.canRead()) {
+        if (!isAvailableFile(from) || !from.isFile() || to == null) {
             return false;
         }
 
@@ -70,23 +71,17 @@ public class OFile {
      * If the destination directory did exist, it will be deleted first.
      */
     public static boolean copyDir(File from, File to) {
-        if (from == null || to == null) {
-            return false;
-        }
-        if (!from.exists() || !from.canRead()) {
+        if (!isAvailableFile(from) || to == null) {
             return false;
         }
 
         if (from.isDirectory()) {
             if (to.exists()) {
                 // Destination directory did exist, delete it.
-                if (!deleteDir(to)) {
-                    return false;
-                }
+                if (!deleteDir(to)) return false;
             }
-            if (!to.mkdirs()) {
-                return false;
-            }
+
+            if (!to.mkdirs()) return false;
 
             String[] children = from.list();
             for (String child : children) {
@@ -104,9 +99,7 @@ public class OFile {
 
     /** Delete the folder recursively. */
     public static boolean deleteDir(File dir) {
-        if (dir == null) {
-            return false;
-        }
+        if (!isAvailableFile(dir)) return false;
 
         if (dir.isDirectory()) {
             File[] children = dir.listFiles();
@@ -126,6 +119,7 @@ public class OFile {
         if (fileName == null || to == null) {
             return false;
         }
+
         try {
             InputStream in = ctx.getAssets().open(fileName);
             FileOutputStream out = new FileOutputStream(to);
