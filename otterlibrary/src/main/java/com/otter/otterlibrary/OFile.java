@@ -132,4 +132,17 @@ public class OFile {
 
         return to.exists();
     }
+
+    /** Get the extension of file, or {@code null} if it doesn't have. */
+    public static String getExtension(File file) {
+        if (!isAvailableFile(file)) return null;
+
+        String fileName = file.getName();
+        int lastDotIndex = fileName.lastIndexOf('.');
+        if (lastDotIndex > 0 && lastDotIndex < fileName.length() - 1) {
+            return fileName.substring(lastDotIndex + 1);
+        } else {
+            return null;
+        }
+    }
 }

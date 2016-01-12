@@ -22,7 +22,8 @@ public class OFileDemo extends DemoActivity {
     private static final String[] OPERATION_ITEM = {
             "Print directory structure", "Create sample directory",
             "copyFile", "copyDir", "deleteDir",
-            "copyFileFromAssets"
+            "copyFileFromAssets",
+            "getExtension"
     };
 
     private File mParentDir;
@@ -30,6 +31,8 @@ public class OFileDemo extends DemoActivity {
     private File mSampleDir;
 
     private String mAssetsFileName = "TPLocation.apk";
+
+    private File mPngFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +43,15 @@ public class OFileDemo extends DemoActivity {
 
         // Prepare sample file has 1 KB.
         mSampleFile = new File(mParentDir, "sample-file");
+
+        // Prepare sample png file.
+        mPngFile = new File(mParentDir, "image.png");
+
         try {
             RandomAccessFile raf = new RandomAccessFile(mSampleFile, "rw");
             raf.setLength(1024);
+
+            mPngFile.createNewFile();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -95,6 +104,12 @@ public class OFileDemo extends DemoActivity {
                 appendLog("copyFileFromAssets: " + OFile.copyFileFromAssets(
                         getApplicationContext(),
                         mAssetsFileName, new File(mParentDir, mAssetsFileName)));
+                break;
+            case 6: // getExtension
+                appendLog("getExtension(" + mPngFile.getName() + "): "
+                        + OFile.getExtension(mPngFile));
+                appendLog("getExtension(" + mSampleFile.getName() + "): "
+                        + OFile.getExtension(mSampleFile));
                 break;
             default:
                 break;
