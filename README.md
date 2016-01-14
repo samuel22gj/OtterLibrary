@@ -1,5 +1,7 @@
 # Otter Library
 
+[![Join the chat at https://gitter.im/samuel22gj/OtterLibrary](https://badges.gitter.im/samuel22gj/OtterLibrary.svg)](https://gitter.im/samuel22gj/OtterLibrary?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=15)
 [![Build Status](https://travis-ci.org/samuel22gj/OtterLibrary.svg)](https://travis-ci.org/samuel22gj/OtterLibrary)
 [![wercker status](https://app.wercker.com/status/decfdfc6beb94de22d7c18621416123f/s/master "wercker status")](https://app.wercker.com/project/bykey/decfdfc6beb94de22d7c18621416123f)
