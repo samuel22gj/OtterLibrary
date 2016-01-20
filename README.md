@@ -29,7 +29,7 @@ A android library with a lot of useful method.
 Gradle:
 ```gradle
 dependencies {
-    compile 'com.github.samuel22gj:otterlibrary:1.0.1'
+    compile 'com.github.samuel22gj:otterlibrary:1.0.2'
 }
 ```
 
@@ -38,7 +38,7 @@ Maven:
 <dependency>
     <groupId>com.github.samuel22gj</groupId>
     <artifactId>otterlibrary</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
