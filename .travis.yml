@@ -22,6 +22,8 @@ android:
     - android-$ANDROID_API_LEVEL
     - extra-android-support
     - extra-android-m2repository
+    - extra-google-google_play_services
+    - extra-google-m2repository
     - android-$ANDROID_TARGET_API_LEVEL
     - sys-img-armeabi-v7a-android-$ANDROID_TARGET_API_LEVEL
 
