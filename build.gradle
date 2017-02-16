@@ -19,3 +19,15 @@ allprojects {
         jcenter()
     }
 }
+
+ext {
+    // sdk and tools
+    compileSdkVersion = 25
+    buildToolsVersion = '25.0.2'
+    minSdkVersion = 16
+    targetSdkVersion = 25
+
+    // dependencies versions
+    supportLibraryVersion = '25.1.1'
+    playServiceVersion = '10.2.0'
+}
